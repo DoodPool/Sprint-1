@@ -5,15 +5,26 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>First Sprint</title>
+    <title>Mine Sweeper</title>
     <link rel="stylesheet" href="css/main.css">
 
 </head>
-<header>Sprint 1 Challenge: Mine Sweeper</header>
 
 <body onload="onInit()">
+    <header>Sprint 1 Challenge: Mine Sweeper</header>
+
+    <h1 class="end-game" hidden></h1>
+    <H2 class="lives">3 LIVES LEFT</H2>
+
+    <div class="difficulty">
+        <button onclick="setLevel(4, 2)">Beginner</button>
+        <button onclick="setLevel(8, 14)">Medium</button>
+        <button onclick="setLevel(12, 32)">Expert</button>
+    </div>
 
     <div class="board-container"></div>
+
+    <button class="end-game" onclick="resetGame()">😃</button>
 
     <script src="js/utils.js"></script>
     <script src="js/main.js"></script>

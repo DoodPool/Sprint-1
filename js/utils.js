@@ -1,5 +1,7 @@
 'use strict'
 
+//In Use//
+
 function renderBoard(mat, selector) {
 
     var strHTML = '<table class="board"><tbody>'
@@ -8,9 +10,18 @@ function renderBoard(mat, selector) {
         strHTML += '<tr>'
         for (var j = 0; j < mat[0].length; j++) {
 
-            const cell = mat[i][j]
-            const className = 'cell cell-' + i + '-' + j
-            strHTML += `<td class="${className}">${cell}</td>`
+            var cell = mat[i][j]
+            // console.log(cell)
+            setMinesNegsCount(gBoard, i, j)
+
+            if (cell.isMine) {
+                cell = MINE
+            } else {
+                cell = cell.minesAroundCount
+            }
+
+            const className = 'cell-' + i + '-' + j
+            strHTML += `<td class="${className}" onclick="onCellClicked(this, ${i}, ${j})"><span class="hide">${cell}</span></td>`
         }
         strHTML += '</tr>'
     }
@@ -30,6 +41,8 @@ function renderCell(location, value) {
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//In Use//
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -130,7 +143,7 @@ function getEmptyCell(board) {
     for (var i = 0; i < board.length; i++) {
         for (var j = 0; j < board[i].length; j++) {
             var currCell = board[i][j]
-            if (currCell.isMine === false) emptyCells.push({ i, j })
+            if (currCell.isMine === false && currCell.isShown === false) emptyCells.push({ i, j })
         }
     }
     var randCell = emptyCells[getRandomInt(0, emptyCells.length - 1)]
