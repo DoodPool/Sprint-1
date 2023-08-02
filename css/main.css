@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: justify;
+    background-color: whitesmoke;
+}
+
+header, footer {
+    height: 80px;
+
+    padding: 22px;
+    
+    font-size: 30px;
+    text-align: center;
+}
+
+table {
+    margin: 20px auto;
+}
+
+table,
+td {
+    border: 1px solid black;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.board td {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 10px;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+.board td:hover {
+    background-color: lightsalmon;
+}
