@@ -6,22 +6,40 @@ function renderBoard(mat, selector) {
 
     var strHTML = '<table class="board"><tbody>'
     for (var i = 0; i < mat.length; i++) {
-
         strHTML += '<tr>'
         for (var j = 0; j < mat[0].length; j++) {
 
             var cell = mat[i][j]
+            var currChar = ''
             // console.log(cell)
             setMinesNegsCount(gBoard, i, j)
 
-            if (cell.isMine) {
-                cell = MINE
+            if (cell.isShown && !gIsFirstTurn) return
+
+            if (cell.isMarked) {
+                currChar = FLAG
+            } else if (cell.isMine) {
+                currChar = MINE
             } else {
-                cell = cell.minesAroundCount
+                currChar = cell.minesAroundCount
             }
 
+            // if (cell.isMine && cell.isMarked) {
+            //     currChar = FLAG
+            // } else if (cell.isMine) {
+            //     currChar = MINE
+            // } else if (cell.isMarked) {
+            //     currChar = FLAG
+            // } else {
+            //     currChar = cell.minesAroundCount
+            // }
+
+            console.log(currChar)
+
             const className = 'cell-' + i + '-' + j
-            strHTML += `<td class="${className}" onclick="onCellClicked(this, ${i}, ${j})"><span class="hide">${cell}</span></td>`
+            strHTML += `<td class="${className}" onclick="onCellClicked(this, ${i}, ${j})" 
+            oncontextmenu="onCellMarked(this, ${i}, ${j})">
+            <span class="hide">${currChar}</span></td>`
         }
         strHTML += '</tr>'
     }
@@ -174,5 +192,11 @@ function onHandleKey(event) {
             break;
     }
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//In Use//
+
+window.addEventListener("contextmenu", e => e.preventDefault())
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

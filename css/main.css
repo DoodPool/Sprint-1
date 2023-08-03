@@ -65,6 +65,10 @@ td {
     visibility: hidden;
 }
 
+/* .show {
+    visibility: visible;
+} */
+
 .board td:hover {
     background-color: lightsalmon;
 }
