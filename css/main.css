@@ -17,8 +17,13 @@ footer {
 
 .lives {
     text-align: center;
-    margin: 0;
+    margin: 0px 0px 15px 0px;
     font-family: DejaVu Sans Mono, monospace;
+}
+
+h3 {
+    display: inline;
+    margin: 0px 35px;
 }
 
 .difficulty {
@@ -64,10 +69,6 @@ td {
 .hide {
     visibility: hidden;
 }
-
-/* .show {
-    visibility: visible;
-} */
 
 .board td:hover {
     background-color: lightsalmon;
